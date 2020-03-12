@@ -20,6 +20,7 @@ namespace Membresia.Areas.Admin.Controllers
         //GET
         public async Task<IActionResult> Index()
         {
+            //cambio de prueba
             return View(await _db.Iglesias.ToListAsync());
         }
 
