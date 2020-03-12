@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Eventos>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+    <br />
+
+    <div class="ibox float-e-margins" id="ibox-create">
+        <div class="ibox-title my-ibox">
+            <h5>Catálogo de Eventos</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="form-group  row">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                    <a asp-action="Nuevo" type="button" class="btn btn-w-m btn-success btn-lg"><i class="fa fa-plus"></i> &nbsp; Nuevo Evento</a>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+            <div class="table-responsive">
+                @if (Model.Count() > 0)
+                {
+                    <table class="table table-bordered table-striped table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(m => m.evento)</th>
+                                <th>@Html.DisplayNameFor(m => m.estatus)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.evento)</td>
+                                <td>@Html.DisplayFor(m => item.estatus)</td>
+                                <td class="text-right">
+                                    <form id="@item.IDiglesia" asp-action="Borrar" asp-route-id="@item.IDiglesia" method="post">
+                                        <a asp-action="Editar" asp-route-Id="@item.IDiglesia" class="btn-primary btn btn-xs"><i class="mdi-pencil mdi"></i> Editar</a>
+                                        <a asp-action="Detalles" asp-route-Id="@item.IDiglesia" class="btn-success btn btn-xs"><i class="mdi mdi-folder"></i> Detalles</a>
+                                        <button type="submit" class="btn-danger btn btn-xs delete"><i class="mdi mdi-delete"></i>Borrar</button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <p> No Hay Datos....</p>
+                }
+            </div>
+
+        </div>
+
+    </div>

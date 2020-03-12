@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Iglesias>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<br />
+
+    <div class="ibox animated fadeInRight" id="ibox-index">
+        <div class="ibox-content">
+            <div class="sk-spinner sk-spinner-double-bounce">
+                <div class="sk-double-bounce1"></div>
+                <div class="sk-double-bounce2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="ibox float-e-margins" style="border-left: 1px solid #6c6e71; border-right: 1px solid #6c6e71; border-bottom: 1px solid #6c6e71;">
+                        <div class="ibox-title my-ibox">
+                            <h5>Catálogo de Iglesias</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group  row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                                    <a asp-action="Nuevo" type="button" class="btn btn-w-m btn-success btn-lg"><i class="fa fa-plus"></i> &nbsp; Nueva Iglesia</a>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="table-responsive">
+                                @if (Model.Count() > 0)
+                                {
+                                    <table class="table table-bordered table-striped table-hover dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>@Html.DisplayNameFor(m => m.iglesia)</th>
+                                                <th>@Html.DisplayNameFor(m => m.pastor)</th>
+                                                <th>@Html.DisplayNameFor(m => m.pais)</th>
+                                                <th>@Html.DisplayNameFor(m => m.ciudad)</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        @foreach (var item in Model)
+                                        {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.iglesia)</td>
+                                        <td>@Html.DisplayFor(m => item.pastor)</td>
+                                        <td>@Html.DisplayFor(m => item.pais)</td>
+                                        <td>@Html.DisplayFor(m => item.ciudad)</td>
+                                        <td class="text-right">
+                                            <form id="@item.IDiglesia" asp-action="Borrar" asp-route-id="@item.IDiglesia" method="post">
+                                                <a asp-action="Editar" asp-route-Id="@item.IDiglesia" class="btn-primary btn btn-xs"><i class="mdi-pencil mdi"></i> Editar</a>
+                                                <a asp-action="Detalles" asp-route-Id="@item.IDiglesia" class="btn-success btn btn-xs"><i class="mdi mdi-folder"></i> Detalles</a>
+                                                <button type="submit" class="btn-danger btn btn-xs delete"><i class="mdi mdi-delete"></i>Borrar</button>
+                                            </form>
+</td>
+                                        
+                                    </tr>
+                                        }
+                                    </table>
+                                }
+                                else
+                                {
+                                    <p> No Hay Datos....</p>
+                                }
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+
+
+    $(function () {
+
+         $('.dataTables-example').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No se encontraron registros",
+                    "infoFiltered": "(Filtrado de _MAX_ total de registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                },
+                stateSave: true,
+                destroy: true,
+                pageLength: 10,
+                responsive: true,
+
+            });
+
+
+
+
+        $('.delete').on('click', function (e, data) {
+            if (!data) {
+                handleDelete(e, 1);
+            } else {
+                window.location = $(this).attr('href');
+            }
+        });
+
+
+    });
+
+    function handleDelete(e, stop) {
+        if (stop) {
+            e.preventDefault();
+            swal({
+                title: "¿Desea Continuar?",
+                text: "¡Se borrará el registro!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, Continuar",
+                cancelButtonText: "No, Cancelar",
+                closeOnConfirm: false
+            },
+                function (isConfirm) {
+                   // alert(e.target);
+                if (isConfirm) {
+                    $(e.target).trigger('click', {});
+                }
+            });
+        }
+    };
+</script>

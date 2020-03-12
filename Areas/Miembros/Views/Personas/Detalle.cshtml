@@ -1,0 +1,160 @@
+﻿@model Personas
+@{
+    ViewData["Title"] = "Detalle";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div class="row">
+
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-content" style="background-color:#1ab394">
+
+            <div class="row">
+                <div class="col-md-9 ">
+                    <div>
+                        <div class="profile-image">
+                            <img src="~/img/a2.png" class="rounded-circle circle-border m-b-md" alt="profile">
+                        </div>
+                        <div class="profile-info">
+                            <div class="">
+                                <div>
+
+                                    <div>
+                                        <span class=" font-perfil font-bold">Julio Cesar Vidaña</span> <button type="button" class="btn btn-default btn-xs">Editar</button>
+                                    </div>
+                                    <div>
+                                        <span class="fa fa-envelope m-r-xs"></span>julio.vidana@gmail.com |
+                                        <span class="fa fa-phone m-r-xs"></span> 6655433478
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>Casado</span> •
+                                    <span>Hombre</span> •
+                                    <span>32 Años</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-tools">
+                    <form role="form" class="form-inline">
+                        <div class="form-group">
+                            <select data-placeholder="Selecciona tipo de Miembro" class="form-control" tabindex="2">
+                                <option value="">Tipo Miembro</option>
+                                <option value="">Miembro</option>
+                                <option value="">Visita</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="float-right dropdown">
+                                <button data-toggle="dropdown" class="dropdown-toggle btn-white form-control">
+                                    <span class="fa fa-cog m-r-xs"></span>
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu m-t-xs">
+                                    <li><a href="#">Borrar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="ibox">
+            <div class="ibox-title ibox-title3">
+                <h5>Información Personal </h5>
+                <div class="ibox-tools">
+                    <a class=""><i class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-6 b-r">
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-user m-r-xs"></span>Género:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"><dd class="mb-1">Hombre</dd></div>
+                        </dl>
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-calendar-o m-r-xs"></span>Nació:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"><dd class="mb-1">20 agosto, 1987</dd> </div>
+                        </dl>
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-calendar-plus-o m-r-xs"></span>Edad:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> 32</dd></div>
+                        </dl>
+
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-envelope m-r-xs"></span>Correo:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"><dd class="mb-1">julio.vidana@gmail.com</dd> </div>
+                        </dl>
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-phone m-r-xs"></span>Teléfono:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"><dd class="mb-1">6622256517</dd> </div>
+                        </dl>
+                        <dl class="row mb-0">
+                            <div class="col-sm-4 text-sm-right"><dt><span class="fa fa-map-marker m-r-xs"></span>Dirección:</dt> </div>
+                            <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> Circuito del Roble 125</dd></div>
+                            <div class="col-sm-4 text-sm-right"><dt></dt> </div>
+                            <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> Privadas del Roble</dd></div>
+                            <div class="col-sm-4 text-sm-right"><dt></dt> </div>
+                            <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> Hermosillo, SON 83117</dd></div>
+                        </dl>
+
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="row" style="margin-top:20px;">
+                    <a asp-action="Timeline" class="btn btn-sm btn-default"><i class="fa fa-bar-chart"></i> Actividad</a>
+                    <a class="btn btn-sm btn-warning"><i class="fa fa-sticky-note"></i> Notas</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox">
+            <div class="ibox-title ibox-title3">
+                <h5>Familia </h5>
+                <div class="ibox-tools">
+                    <a class=""><i class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <p class="alert alert-danger animated fadeInRight text-center">
+                    Aún no se ha agregado a alguna familia.
+                    <br />
+                    <a class="alert-link" href="#">Agregar ahora</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.chosen-select').chosen({ width: "100%" });
+
+    });
+</script>

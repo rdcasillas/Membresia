@@ -1,0 +1,57 @@
+﻿@*@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()*@
+
+ 
+<ul class="nav navbar-top-links navbar-right">
+
+    <li class="dropdown">
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="false">
+            <i class="mdi mdi-account-circle"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages dropdown-profile dropdown-menu-right">
+            <li>
+
+                <span class="profile">
+                    <i class="mdi mdi-account-circle mdi-48px pull-left"></i>
+                    @*@Html.GetFullNameByUser(User.Identity.GetUserName())*@
+                    <small class="text-muted block">Administrador</small>
+                </span>
+
+
+
+            </li>
+            <li class="dropdown-divider"></li>
+            <li><a asp-area="Identity" asp-page="/Account/Register" title="Register"><i class="mdi mdi-account"></i> Registrar</a></li>
+            <li><a href="@Url.Action( "Manage", "Account")" title="Editar Perfil"><i class="mdi mdi-account"></i> Editar Perfil</a></li>
+            <li><a href="@Url.Action( "Manage", "Account")" title="Editar Perfil"><i class="mdi mdi-lock"></i> Configurar Contraseña</a></li>
+
+
+        </ul>
+   </li>
+
+
+
+
+   <li class="dropdown">
+       <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="false">
+           <i class="mdi mdi-dots-vertical"></i>
+       </a>
+       <ul class="dropdown-menu dropdown-messages dropdown-menu-right">
+           <li><a href="javascript:document.getElementById('logoutForm').submit()" title="Cerrar Sesión"><i class="mdi mdi-power-standby"></i> Cerrar Sesión</a></li>
+
+       </ul>
+   </li>
+
+
+
+</ul>
+   @*}
+}
+else
+{
+           
+}*@

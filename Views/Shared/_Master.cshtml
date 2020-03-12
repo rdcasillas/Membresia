@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - Miembros</title>
+    <link rel="shortcut icon" type="image/png" href="~/img/Logo_Pequeño.png" />
+
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Scripts/SweetAlert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Scripts/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="~/Scripts/select2/select2.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <link href="~/Content/awesome-checkboxes.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/autocomplete.css" rel="stylesheet" />
+    <link href="~/fonts/mdi/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/Content/plugins/datapicker/datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/js.cookie.min.js"></script>
+</head>
+<body class="mini-navbar">
+
+    <div class="wrapper-loader fade in" style="display: none;">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Wrapper-->
+    <div id="wrapper">
+
+
+        <!-- Navigation -->
+        <partial name="_Navigation" />
+
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="page-wrapper gray-bg">
+
+            <!-- Top Navbar -->
+            <partial name="_TopNavbar" />
+
+
+
+            <div class="wrapper wrapper-content">
+                <!-- Main view  -->
+                <div class="row">
+                    <div class="col-md-12" style="margin-bottom:30px;">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End page wrapper-->
+    </div>
+    @*End wrapper*@
+
+
+
+
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/plugins/metisMenu/metisMenu.min.js"></script>
+    <script src="~/Scripts/plugins/pace/pace.min.js"></script>
+    <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/app/inspinia.js"></script>
+    <script src="~/Scripts/jQuery.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/SweetAlert/sweetalert-dev.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/switchery/switchery.min.js"></script>
+    <script src="~/Scripts/bootstrap-autocomple/jquery.mockjax.js"></script>
+    <script src="~/Scripts/bootstrap-autocomple/bootstrap-typeahead.js"></script>
+    <script src="~/Scripts/select2/select2.full.js"></script>
+    <script src="~/Scripts/bootstrap-select.js"></script>
+    <script src="~/Scripts/plugins/dataTables/datatables.min.js"></script>
+    <script src="~/Scripts/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="~/js/plugins/chosen/chosen.jquery.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
