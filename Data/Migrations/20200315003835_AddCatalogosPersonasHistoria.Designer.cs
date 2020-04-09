@@ -4,14 +4,16 @@ using Membresia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Membresia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200315003835_AddCatalogosPersonasHistoria")]
+    partial class AddCatalogosPersonasHistoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,7 +99,7 @@ namespace Membresia.Data.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<DateTime?>("FechaNacimiento")
+                    b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaRegistro")
@@ -265,9 +267,11 @@ namespace Membresia.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ApPaterno")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
-                    b.Property<int?>("CP")
+                    b.Property<int>("CP")
                         .HasColumnType("int");
 
                     b.Property<string>("Calle")
@@ -285,16 +289,19 @@ namespace Membresia.Data.Migrations
                     b.Property<DateTime>("FechaCambio")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaEstatus")
+                    b.Property<DateTime>("FechaEstatus")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaNacimiento")
+                    b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IDiglesia")
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IDiglesia")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdBautismo")
+                    b.Property<int>("IdBautismo")
                         .HasColumnType("int");
 
                     b.Property<int?>("IdEscolaridad")
@@ -306,14 +313,16 @@ namespace Membresia.Data.Migrations
                     b.Property<int?>("IdFamilia")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdMiembro")
+                    b.Property<int>("IdMiembro")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPersona")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Notas")
                         .HasColumnType("varchar(MAX)");
@@ -336,10 +345,10 @@ namespace Membresia.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("idEstatus")
+                    b.Property<int>("idEstatus")
                         .HasColumnType("int");
 
-                    b.Property<int?>("idsexo")
+                    b.Property<int>("idsexo")
                         .HasColumnType("int");
 
                     b.HasKey("IdCambio");

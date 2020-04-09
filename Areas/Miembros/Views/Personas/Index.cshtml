@@ -16,37 +16,36 @@
                 <a asp-action="Nuevo" type="button" class="btn btn-w-m btn-success btn-lg"><i class="fa fa-plus"></i> &nbsp; Nueva Persona</a>
             </div>
         </div>
+       
         <div class="hr-line-dashed"></div>
 
-
         <div class="table-responsive">
-           
-            <table class="table table-bordered table-striped table-hover dataTables-example">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nombre completo</th>
-                        <th>Email</th>
-
-                    </tr>
-                </thead>
-
-
-                <tr>
-                    <td style="text-align:center" class="client-avatar"><img alt="image" src="~/img/a2.png"> </td>
-                    <td><a asp-action="Detalle"  class="client-link">Julio Cesar Vidaña</a></td>
-                    <td>julio.vidana@gmail.com</td>
-                </tr>
-                <tr>
-                    <td style="text-align:center" class="client-avatar"><img alt="image" src="~/img/a3.png"> </td>
-                    <td>Anali Pazos Trujillo</td>
-                    <td>analia@gmail.com</td>
-                </tr>
-
-            </table>
-           
-                @*<p> No Hay Datos....</p>*@
-            
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-bordered table-striped table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>@Html.DisplayNameFor(m => m.Nombre)</th> 
+                            <th>@Html.DisplayNameFor(m => m.CorreoElectronico)</th>
+                            <th>@Html.DisplayNameFor(m => m.FechaRegistro)</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:center" class="client-avatar"><img alt="image" src="~/img/Perfil_Default.png"> </td>
+                            <td><a asp-action="Detalle" asp-route-Id="@item.IdPersona" class="client-link">@Html.DisplayFor(m => item.NombreCompleto)</a></td>
+                            <td>@Html.DisplayFor(m => item.CorreoElectronico)</td>
+                            <td>@Html.DisplayFor(m => item.FechaRegistro)</td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p> No Hay Datos....</p>
+            }
         </div>
 
     </div>

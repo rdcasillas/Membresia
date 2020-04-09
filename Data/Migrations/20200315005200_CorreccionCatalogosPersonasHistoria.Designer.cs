@@ -4,14 +4,16 @@ using Membresia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Membresia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200315005200_CorreccionCatalogosPersonasHistoria")]
+    partial class CorreccionCatalogosPersonasHistoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,7 +287,7 @@ namespace Membresia.Data.Migrations
                     b.Property<DateTime>("FechaCambio")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("FechaEstatus")
+                    b.Property<DateTime>("FechaEstatus")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaNacimiento")
@@ -336,7 +338,7 @@ namespace Membresia.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("idEstatus")
+                    b.Property<int>("idEstatus")
                         .HasColumnType("int");
 
                     b.Property<int?>("idsexo")

@@ -1,11 +1,10 @@
-﻿@model Personas
+﻿@model Membresia.Models.ViewModels.PersonaEditarVM
 @{
-    ViewData["Title"] = "Nuevo";
-    Layout = "~/Views/Shared/_Master.cshtml";
+    ViewData["Title"] = "Editar";
 }
-
-    <form method="post" asp-action="Nuevo">
-
+    <input type="hidden" id="error" value="@ViewBag.Error" />
+    <form method="post" asp-action="Editar" id="frmPersona">
+        @Html.AntiForgeryToken()
         <div class="row wrapper page-heading">
             <div class="col-md-10 col-sm-10 col-xs-12">
                 <h2>Agregar Persona</h2>
@@ -34,7 +33,8 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
                                 <input asp-for="Nombre" class="form-control" placeholder="Nombre *" />
-                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
                                 <input asp-for="ApPaterno" class="form-control" placeholder="Apellido Paterno *" />
@@ -68,7 +68,7 @@
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-sm-12">
-                                <input asp-for="Telefono" class="form-control  phone-mask" data-mask="(999) 999-9999" placeholder="" />
+                                <input asp-for="Telefono" class="form-control phone-mask" placeholder="" />
                                 <span asp-validation-for="Telefono" class="text-danger"></span>
                             </div>
                         </div>
@@ -113,48 +113,80 @@
                                     <option value="1">Hombre</option>
                                     <option value="2">Mujer</option>
                                 </select>
+                                <span asp-validation-for="idsexo" class="text-danger"></span>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
                                 <label class="control-label">Fecha de Nacimiento</label>
-                                <div class="form-group" >
+                                <div class="form-group">
                                     <div class="input-group date">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input asp-for="FechaNacimiento" type="text" class="form-control datepicker" value="@ViewBag.FechaN">
+                                        <input asp-for="FechaNacimiento" type="text" class="form-control datepicker">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
                                 <label class="control-label">Estado civil</label>
                                 <select asp-for="IdEstadoCivil" class="form-control m-b"
-                                        asp-items="@(new SelectList(ViewBag.EstadoCivil,"IdEstadoCivil","EstadoCivil"))">
+                                        asp-items="@(new SelectList(Model.EstadoCivilList,"IdEstadoCivil","EstadoCivil"))">
                                     <option>Selecciona una Opción</option>
                                 </select>
+                                <span asp-validation-for="IdEstadoCivil" class="text-danger"></span>
                             </div>
-                            
 
                         </div>
                     </div>
                 </div>
 
-                
-
                 <div class="hr-line-dashed"></div>
-                <partial name="_GuardaryRegresarBtn" />
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
+                                <label class="control-label">Oficio</label>
+                                <input asp-for="Oficio" class="form-control" placeholder="Oficio o Trabajo" />
+                                <span asp-validation-for="Oficio" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12 div-size2 ">
+                                <label class="control-label">Escolaridad</label>
+                                <select asp-for="IdEscolaridad" class="form-control m-b"
+                                        asp-items="@(new SelectList(Model.EscolaridadList,"IdEscolaridad","Escolaridad"))">
+                                    <option value="0">Selecciona una Opción</option>
+                                </select>
+                                <span asp-validation-for="IdEscolaridad" class="text-danger"></span>
+                            </div>
 
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    @*<partial name="_GuardaryRegresarBtn" />*@
+                    <div class="row" style="margin-top:20px;">
+                        <a asp-action="Detalle" asp-route-id="@Model.IdPersona"  class="btn btn-sm btn-default"><i class="fa fa-arrow-left"></i> Regresar</a>
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
+                    </div>
+
+                </div>
             </div>
-        </div>
         @Html.HiddenFor(model => model.IdPersona)
     </form>
 
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
 
-            $('.datepicker').datepicker({
-                startView: 'decade',
-                language: 'es'
-            });
+      
 
-       
+        $('.datepicker').datepicker({
+            startView: 'decade',
+            language: 'es'
+        });
+
+        if ($("#error").val().length > 0) {
+            MyToast("Aviso", $("#error").val(), "error");
+        }
+
 
     });
-    </script>
+</script>
+

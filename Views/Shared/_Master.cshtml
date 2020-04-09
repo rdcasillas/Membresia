@@ -23,13 +23,15 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/custom.css" rel="stylesheet" />
     <link href="~/Content/plugins/dataTables/datatables.min.css" rel="stylesheet" />
-    <link href="~/Content/plugins/datapicker/datepicker3.css" rel="stylesheet" />
+    @*<link href="~/Content/plugins/datapicker/datepicker3.css" rel="stylesheet" />*@
     <link href="~/Content/plugins/chosen/bootstrap-chosen.css" rel="stylesheet" />
 
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
     <script src="~/Scripts/jquery-2.1.1.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/js.cookie.min.js"></script>
 </head>
 <body class="mini-navbar">
@@ -94,8 +96,8 @@
     <script src="~/Scripts/bootstrap-select.js"></script>
     <script src="~/Scripts/plugins/dataTables/datatables.min.js"></script>
     <script src="~/Scripts/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>
-    <script src="~/js/plugins/chosen/chosen.jquery.js"></script>
+
+
     @RenderSection("Scripts", required: false)
 
 </body>

@@ -14,6 +14,8 @@ namespace Membresia.Models
         [Required(ErrorMessage = "Falta Nombre de Evento!")]
         public string evento { get; set; }
         public bool estatus { get; set; }
+
+        [Required]
         public int IDiglesia { get; set; }
     }
 }
